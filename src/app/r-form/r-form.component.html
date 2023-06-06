@@ -7,6 +7,22 @@
       id="fullName"
       [formControl]="fullName"
     />
+    <p
+      class="form-text text-danger"
+      *ngIf="fullName.touched && fullName.hasError('required')"
+    >
+      Required
+    </p>
+    <p
+      class="form-text text-danger"
+      *ngIf="fullName.touched && fullName.hasError('minlength')"
+    >
+      Minimum
+      <span *ngIf="fullName.errors">{{
+        fullName.errors["minlength"].requiredLength
+      }}</span>
+      characters
+    </p>
   </div>
 
   <div class="from-group mb-3">

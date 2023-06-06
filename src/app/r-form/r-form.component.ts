@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-r-form',
@@ -11,7 +16,7 @@ export class RFormComponent {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      fullName: [],
+      fullName: ['', [Validators.required, Validators.minLength(5)]],
       age: [],
       newsletter: [],
       language: [],
@@ -45,6 +50,10 @@ export class RFormComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    if (this.form.valid) {
+      console.log(this.form.value);
+    } else {
+      console.log('invalid form');
+    }
   }
 }
