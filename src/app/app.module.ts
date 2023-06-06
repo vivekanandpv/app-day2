@@ -8,6 +8,7 @@ import { PlaygroundComponent } from './playground/playground.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RFormComponent } from './r-form/r-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RightComponent,
     PlaygroundComponent,
     RFormComponent,
+    ExampleComponent,
   ],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [],

@@ -23,6 +23,12 @@
       }}</span>
       characters
     </p>
+    <p
+      class="form-text text-danger"
+      *ngIf="fullName.touched && fullName.hasError('my_error')"
+    >
+      Minimum 4 characters
+    </p>
   </div>
 
   <div class="from-group mb-3">

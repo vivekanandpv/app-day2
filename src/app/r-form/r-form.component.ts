@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 
@@ -16,7 +18,7 @@ export class RFormComponent {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(5)]],
+      fullName: ['', [Validators.required, this.validateFullName.bind(this)]],
       age: [],
       newsletter: [],
       language: [],
@@ -47,6 +49,16 @@ export class RFormComponent {
 
   get comments(): FormControl {
     return this.form.controls['comments'] as FormControl;
+  }
+
+  validateFullName(ctrl: AbstractControl): ValidationErrors | null {
+    const val = ctrl.value;
+
+    return val.length > 3
+      ? null
+      : {
+          my_error: true,
+        };
   }
 
   onSubmit() {
